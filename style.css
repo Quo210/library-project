@@ -7,6 +7,7 @@
 body {
     background-color: black;
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #header, #footer {
@@ -58,25 +59,39 @@ div#core > div#buttonDiv {
 div.book-holder {
     background-color: darkslateblue;
     border: 1px solid white;
-    height: 10vh;
-    max-height: 100px;
+    height: 15vh;
     width: auto;
     margin: 5px 0px;
+    display: grid;
+    grid-template-rows: 50% auto;
 }
 
 div.titleDiv, div.statsDiv {
     display: grid;
     grid-template-columns: auto 75%;
     grid-template-rows: auto;
-    height: 50%;
     padding: 5px;
+    height: 100%;
 }
 
 .date, .read {
     grid-column: 1/2;
     grid-row: 1/2;
-    display: inline-block;
+    display: flex;
     border: 1px lightblue solid;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notread {
+    background-color: rgb(161, 8, 8);
+    color: black;
+}
+
+.yesread {
+    background-color: green;
+    color: white;
 }
 
 .author, .title {
@@ -94,4 +109,31 @@ div#form {
     border: red solid 1px;
     background-color: white;
     color: black;
+    overflow: hidden;
+}
+
+fieldset {
+    width: 95%;
+    margin: auto;
+    height: 100%;
+    padding: 10px;
+    font-size: large;
+}
+
+input.better-area {
+    width: 80%;
+    max-width: 600px;
+    height: 3em;
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    width: 10vw;
+}
+
+.inner-btn {
+    padding: 2.5px;
+    margin: 5px auto;
+    font-size: 16px;
 }

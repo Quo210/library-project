@@ -16,14 +16,14 @@
             <button class="BTN">Guidelines</button>
         </div>
         <div id="listDiv" class="central">
-            <div class="book-holder">
+            <!-- <div class="book-holder" data-key="0">
                 <div class="titleDiv">
                     <p class="date">8/04/21</p>
                     <p class="title">In Defense of Food</p>
                 </div>
                 <div class="statsDiv">
                     <p class="author">By: Placeholder, 256p.</p>
-                    <p class="read">true</p>
+                    <p class="read">true</p> -->
                 </div>
             </div>
         </div>
@@ -32,19 +32,24 @@
     <div id="footer"><h4>Made by Quo210</h4></div>
     
     <div id="form" class="central">
-        <form action="">
-            <label for="author">Author(s):</label> <br>
-            <input type="text" name="author" id="author"> <br>
-            <label for="title">Book's Title:</label><br>
-            <input type="text" name="title" id="title"><br>
-            <label for="pages">Number of Pages</label><br>
-            <input type="number" name="pages" id="pages"><br>
-            <label for="read">Did you already read this book?</label><br>
-            <input type="checkbox" name="read" id="read"> <br>
-            <input type="submit" value="Create this Book"> <br>
-            <input type="button" value="Cancel"><br>
-            <input type="button" value="Help?">
-        </form>
+        <fieldset>
+            <legend>Add a New Book</legend>
+            <h3>Fill these boxes to document your reading journey!</h3>
+            <form action="">
+                <label for="title">Book's Title:</label><br>
+                <input type="text" name="title" id="title" maxlength="40" autocomplete="off"><br>
+                <label for="author">Author(s):</label> <br>
+                <input type="text" name="author" id="author" maxlength="40"> <br>
+                <label for="pages">Number of Pages</label><br>
+                <input min="1" max="999" type="number" name="pages" id="pages"><br>
+                <label for="read">Have you read this book?</label><br>
+                <input type="checkbox" name="read" id="read"> <br>
+                <input type="button" value="Create this Book" class="inner-btn"> <br>
+                <input type="button" value="Cancel" class="inner-btn"><br>
+                <input type="button" value="Help?" class="inner-btn">
+            </form>
+        </fieldset>
+        
     </div>
     
     <script src="scripts.js"></script>
