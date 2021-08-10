@@ -18,4 +18,6 @@ Changelog # 3
 - Added Project's guidelines and configured Guidelines button.
 
 Changelog # 4
-- Added script oninput at the form > input > page numbers to only accept up to '999' as value
+- Added script oninput at the form > input > page numbers to only accept up to '999' as value.
+- Configured CSS to make it look better. Added some extra classes to handle hidden items.
+- Debugged one logic error when summoning Project Guidelines that made it remain in the overflow-y after being summoned the first time.
