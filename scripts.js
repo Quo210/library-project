@@ -248,10 +248,16 @@ function showGuideLines() {
         guideBoolean = true;
     } else {
         x.classList.remove('guidelines');
-        x.classList.add('hiddden')
+        x.classList.add('hidden')
         guideBoolean = false;
     }
     
+}
+
+function checkLength(object) {
+    if(object.value.length > 3) {
+        object.value = 999;
+    }
 }
 
 // Script initialization Zone

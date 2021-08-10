@@ -16,3 +16,6 @@ Changelog # 3
 - Added deleteBook() function, that deletes an element based on the data-key from where it originated.
 - Added editButton() function that toggles the aspect for the delete button on each book, using the date slot in the 'card'
 - Added Project's guidelines and configured Guidelines button.
+
+Changelog # 4
+- Added script oninput at the form > input > page numbers to only accept up to '999' as value

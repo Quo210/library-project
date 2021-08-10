@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body> 
-    <div id="header"><h1>Library Project</h1></div>
+    <div id="header"><h1>My Library</h1></div>
     <div id="core">
         <div id="buttonDiv">
-            <button class="BTN">Add</button>
-            <button class="BTN">Edit</button>
-            <button class="BTN">Guidelines</button>
+            <button id="add"class="BTN">+</button>
+            <button id="del" class="BTN">-</button>
+            <button id="more" class="BTN">...</button>
         </div>
         <div id="listDiv" class="central">
             <!-- <div class="book-holder" data-key="0">
@@ -30,9 +30,8 @@
     </div>
     
     <div id="footer"><h4>Made by Quo210</h4></div>
-    <div id="attribution" class="hidden">Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     
-    <div id="guidelines" class="central hidden">
+    <div id="guidelines" class="central improved-cover hidden">
         <h3>Project's Guidelines</h3>
         <ol>
             <li>Books are stored in a simple array.</li>
@@ -46,26 +45,32 @@
         <ul>
             <li>Add object permanence by learning to use localStorage, so the webpage remembers the books added / deleted.</li>
         </ul> <br>
-        <h3>Complete guidelines can be found in <a href="https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library">TOP's website</a></h3>
-        
+        <h3>Complete guidelines can be found in <a href="https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library">The Odin Project's website</a></h3>
+        <br>
+        <h3>Additional information:</h3> <br>
+        'Remove' Icon made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>        
     </div>
 
-    <div id="form" class="central">
+    <div id="form" class="central improved-cover">
         <fieldset>
             <legend>Add a New Book</legend>
             <h3>Fill these boxes to document your reading journey!</h3>
             <form action="">
-                <label for="title">Book's Title:</label><br>
+                <label for="title">Book's Title:</label>
                 <input type="text" name="title" id="title" maxlength="40" autocomplete="off"><br>
-                <label for="author">Author(s):</label> <br>
+
+                <label for="author">Author(s):</label>
                 <input type="text" name="author" id="author" maxlength="40"> <br>
-                <label for="pages">Number of Pages</label><br>
-                <input min="1" max="999" type="number" name="pages" id="pages"><br>
-                <label for="read">Have you read this book?</label><br>
+
+                <label for="pages">Number of Pages</label>
+                <input min="1" max="999" maxlength="3" type="number" name="pages" id="pages"
+                oninput="checkLength(this)"><br>
+
+                <label for="read">Have you read this book?</label>
                 <input type="checkbox" name="read" id="read"> <br>
+
                 <input type="button" value="Create this Book" class="inner-btn"> <br>
                 <input type="button" value="Cancel" class="inner-btn"><br>
-                <input type="button" value="Help?" class="inner-btn">
             </form>
         </fieldset>
         

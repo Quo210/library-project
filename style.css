@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: #72b095;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -13,6 +13,8 @@ body {
 #header, #footer {
     width: 100%;
     text-align: center;
+    background-color: #1A202C;
+    color: #72b095;
 }
 
 #header {
@@ -30,7 +32,7 @@ body {
 div#core > div#buttonDiv {
     height: 15vh;
     width: auto;
-    background-color: darkblue;
+    background-color: #1f7872;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -41,52 +43,84 @@ div#core > div#buttonDiv {
     height: 80px;
     max-width: 160px;
     max-height: 160px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 4rem;
+    border-radius: 10px;
+    box-shadow: #1A202C 7.5px 10px;
+    border: 2px white solid;
+    color: whitesmoke;
+
 }
 
 .BTN:active {
-    background-color: lightblue;
+    transform: scale(1.05);
+}
+
+button#add.BTN {
+    background: rgb(60,168,78);
+background: linear-gradient(90deg, rgba(60,168,78,1) 40%, rgba(24,51,31,1) 100%);
+}
+
+button#del.BTN {
+    background: rgb(166,45,45);
+background: linear-gradient(90deg, rgba(166,45,45,1) 40%, rgba(59,28,34,1) 100%);
+}
+
+button#more {
+    background: rgb(45,151,166);
+background: linear-gradient(90deg, rgba(45,151,166,1) 40%, rgb(7, 97, 116) 100%);
 }
 
 .central {
-    height: 65vh;
+    height: 70vh;
     border: 1px solid white;
     margin: 2em auto;
-    width: 90vw;
+    width: 92.5vw;
     max-width: 800px;
     overflow-y: scroll;
 }
 
+#listDiv {
+    background-color: #dedba7;
+    padding: 5px;
+    outline: solid 0.5rem #d13f31;
+    outline-style: double;
+}
+
 div.book-holder {
-    background-color: darkslateblue;
-    border: 1px solid white;
+    background-color: #d13f31;
+    outline: 0.25rem white solid;
     height: 15vh;
-    width: auto;
-    margin: 5px 0px;
+    width: 95%;
+    margin: 5px auto 20px auto;
     display: grid;
-    grid-template-rows: 50% auto;
+    grid-template-rows: 40% auto;
 }
 
 div.titleDiv, div.statsDiv {
     display: grid;
-    grid-template-columns: auto 75%;
+    grid-template-columns: auto 70%;
     grid-template-rows: auto;
     padding: 5px;
-    height: 100%;
+    height: 90%;
 }
 
 .date, .read {
     grid-column: 1/2;
     grid-row: 1/2;
     display: flex;
-    border: 1px lightblue solid;
-    justify-content: center;
-    align-items: center;
+    border: 1px #dedba7 inset;
+    background-color: #1f7872;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    
 }
 
 .notread {
     background-color: rgb(161, 8, 8);
-    color: black;
+    color: white;
 }
 
 .yesread {
@@ -98,6 +132,10 @@ div.titleDiv, div.statsDiv {
     grid-column: 2/3;
     grid-row: 1/2;
     padding-left: 10px;
+    color: #1a202c;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
 }
 
 div#form {
@@ -105,11 +143,20 @@ div#form {
     visibility: hidden;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    border: red solid 1px;
-    background-color: white;
     color: black;
     overflow: hidden;
+    transform: translate(-50%,-44%);
+
+}
+
+.improved-cover {
+    width: 97.5vw;
+    height: 75vh;
+    max-width: 750px;
+    border: #1f7872 7.5px solid;
+    background-color: #dedba7;
+    color: #1A202C;
+
 }
 
 fieldset {
@@ -118,6 +165,7 @@ fieldset {
     height: 100%;
     padding: 10px;
     font-size: large;
+    font-family: monospace;
 }
 
 input.better-area {
@@ -126,16 +174,32 @@ input.better-area {
     height: 3em;
     padding-left: 5px;
     font-size: 16px;
+    background-color: #d13f31;
+    color: #1A202C;
+    margin-bottom: 1rem;
+    font-weight: 800;
 }
 
 input[type="checkbox"] {
     width: 10vw;
+    margin-bottom: 25px;
 }
 
 .inner-btn {
-    padding: 2.5px;
-    margin: 5px auto;
     font-size: 16px;
+    font-weight: 800;
+    width: 50vw;
+    max-width: 400px;
+    height: 3rem;
+    display: block;
+    margin: -5px auto;
+    border-radius: 10px;
+    background-color: #1f7872;
+    color: white;
+}
+
+label {
+    display: block;
 }
 
 .deletion {
@@ -148,17 +212,19 @@ input[type="checkbox"] {
 
 .hidden {
     visibility: hidden;
+    display: none;
 }
 
 .guidelines {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    border: red solid 1px;
-    background-color: white;
-    color: black;
+    transform: translate(-50%,-45%);
     overflow-y: hidden;
     padding: 1em;
     padding-left: 2em;
+}
+
+.muh {
+    color: #1a202c, #1f7872, #72b095, #dedba7, #d13f31;
 }
