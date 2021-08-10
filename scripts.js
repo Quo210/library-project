@@ -1,5 +1,7 @@
 
 let myLibrary = [];
+let editBoolean = false;
+let guideBoolean = false;
 
 const ref_ListDiv = document.querySelector('div#listDiv');
 const ref_mainButtonsArr = Array.from( document.querySelectorAll('button.BTN'));
@@ -8,11 +10,10 @@ const ref_formDiv = document.querySelector('div#form');
 const ref_formCancelBtn = document.querySelector('input[value="Cancel"]')
 const ref_textAreasArr = Array.from( document.querySelectorAll('input[type="text"],input[type="number"]') );
 const ref_formButtons = document.querySelectorAll('input[type="button"]')
-let bookCounter = currentBooks();
+const ref_deleteBTN = ref_mainButtonsArr[1];
+const ref_guideBTN = ref_mainButtonsArr[2];
+const ref_guideDiv = document.querySelector('div#guidelines');
 
-// Test Zone
-ref_formDiv.style.visibility = 'hidden';
-// Test Zone Ends
 
 
 function currentBooks(){
@@ -21,28 +22,24 @@ function currentBooks(){
 };
 
 function genRandom() {
-    return Math.floor( Math.random() * 4 )
+    return (Math.floor( Math.random() * 100 ) + 1).toString()
 }
 
 function Book(title = 'Unknown name',author = 'Unknown writer',pages = '?',read) {
     let creationDate = new Date().toLocaleDateString();
 
-    let genNumID = genRandom().toString();
-    let takenIDs = currentBooks(); // Returns Array of IDs
+    let genNumID = genRandom();
+    let takenIDs = currentBooks(); // Returns Array of data-keys for querySelector div.book-holder
     
-    // let boolCheck = takenIDs.includes(genNumID);
-    // console.log(`Array is ${takenIDs} and check result was ${boolCheck}`)
-    // console.log(takenIDs)
-    // console.log(genNumID)
+    const look4Equals = () => { 
+        if (takenIDs.includes(genNumID) ===  true) {
+            genNumID = genRandom();
+            console.log(`Due to repetition ${genNumID} was just generated.`);
+            look4Equals();
+        } else { console.log(`Unique ID ${genNumID} generated!`) }
+    } 
 
-    // const look4Equals = () => { 
-    //     if (boolCheck ==  true) {
-    //         genNumID = genRandom();
-    //         look4Equals()
-    //     } else { console.log(`Unique ID ${genNumID} generated!`) }
-    // } 
-
-    // look4Equals()
+    look4Equals()
 
     this.title = title,
     this.author = author,
@@ -76,7 +73,7 @@ function userInput4Book() {
     }
     
     let generatedBk = addNewBook(bkTitle,bkAuthor,bkPages,bkRead());
-    generate_Holder(generatedBk);
+    generateHolder(generatedBk);
     bringForm();
     resetForm();
 
@@ -92,7 +89,7 @@ function generateList() {
     const totalBooks = myLibrary.length;
     for (let i = 0; i < totalBooks; i++) {
         let currentIndex = myLibrary[i];
-        generate_Holder(currentIndex);
+        generateHolder(currentIndex);
     }
 }
 
@@ -100,15 +97,17 @@ function globalListenerSetter() {
     ref_addButton.addEventListener('click',bringForm);
     ref_formButtons[0].addEventListener('click',userInput4Book)
     ref_formCancelBtn.addEventListener('click',cancelInput)
+    ref_deleteBTN.addEventListener('click',editButton)
+    ref_guideBTN.addEventListener('click',showGuideLines);
 }
 
-function classTo_textAreas() {
+function classtoTextAreas() {
     ref_textAreasArr.forEach(element => {
         element.classList.add('better-area')
     })
 }
 
-function generate_Holder(book) {
+function generateHolder(book) {
     let newHolder = document.createElement('div');
     let newTitleDiv = document.createElement('div');
     let newStatsDiv = document.createElement('div');
@@ -168,14 +167,15 @@ function bringForm() {
     }
 }
 
+function localizeBook(dataKey) {
+    return myLibrary.filter((book) => book.numID == dataKey ) }
+
+
 function changeColorOfRead() {
     const dataKey = this.parentElement.parentElement.getAttribute('data-key');
     const pElement = document.querySelector(`div[data-key="${dataKey}"] > div.statsDiv  > p.read`);
     
-    const localizeBook = () => {
-        return myLibrary.filter((book) => book.numID == dataKey ) }
-
-    let bookClicked = localizeBook();
+    let bookClicked = localizeBook(dataKey);
 
     changeReadStatus(bookClicked[0],pElement)
     const currentStatus = this.textContent;
@@ -204,12 +204,64 @@ function changeReadStatus(book,pRef) {
     
 }
 
+function deleteBook() {
+    const dataKey = this.parentElement.parentElement.getAttribute('data-key');
+    const pElement = document.querySelector(`div[data-key="${dataKey}"] > div.titleDiv  > p.date`);
+
+    let bookClicked = localizeBook(dataKey);
+    let bookID = bookClicked[0].numID; 
+    let indexPosition = myLibrary.indexOf(bookClicked[0])
+    let newArray = myLibrary.filter( (book) => { return book.numID != bookID});
+    const annihilateHolder = () => {
+        pElement.parentElement.parentElement.parentElement.removeChild(document.querySelector(`div[data-key="${dataKey}"]`))
+    }
+    annihilateHolder();
+    myLibrary = newArray;
+    
+    return myLibrary    
+}
+
+function editButton() {
+    const dateBtns = Array.from( document.querySelectorAll('p.date') );
+
+    if(editBoolean === false) {
+        dateBtns.forEach(element => {
+            element.classList.add('deletion')
+            element.addEventListener('click',deleteBook)
+        })
+        editBoolean = true;
+    } else {
+        dateBtns.forEach(element => {
+            element.classList.remove('deletion')
+            element.removeEventListener('click',deleteBook)
+        })
+        editBoolean = false;
+    }
+}
+
+function showGuideLines() {
+    const x = ref_guideDiv;
+    
+    if (guideBoolean === false) {
+        x.classList.remove('hidden')
+        x.classList.add('guidelines')
+        guideBoolean = true;
+    } else {
+        x.classList.remove('guidelines');
+        x.classList.add('hiddden')
+        guideBoolean = false;
+    }
+    
+}
+
+// Script initialization Zone
 
 globalListenerSetter()
-classTo_textAreas()
+classtoTextAreas()
 addNewBook('Dune','Frank Herbert',444,false)
-generate_Holder(myLibrary[0]);
+generateHolder(myLibrary[0]);
 addNewBook('The Three Body Problem','Cixin Liu',302,true);
-generate_Holder(myLibrary[1]);
+generateHolder(myLibrary[1]);
 addNewBook('Beyond Order','Jordan Peterson',432,true);
-generate_Holder(myLibrary[2]);
+generateHolder(myLibrary[2]);
+ref_formDiv.style.visibility = 'hidden';

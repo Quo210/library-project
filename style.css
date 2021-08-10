@@ -137,3 +137,28 @@ input[type="checkbox"] {
     margin: 5px auto;
     font-size: 16px;
 }
+
+.deletion {
+    background-image: url(images/remove.png);
+    background-size: cover;
+    background-position: center;
+    background-color: red;
+    font-size: 0px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.guidelines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: red solid 1px;
+    background-color: white;
+    color: black;
+    overflow-y: hidden;
+    padding: 1em;
+    padding-left: 2em;
+}

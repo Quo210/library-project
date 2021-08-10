@@ -10,3 +10,9 @@ Changelog # 2
 
 - Modified Book constructor to generate a random number between 1 and 100, so chances of repeated IDs are reduced. Plan on creating a checker script to handle repetition.
 - Fixed issues with the HTML. No longer has book-holder with information, all is generated from the DOM now.
+
+Changelog # 3
+- Fixed look4Equals() issue in Book constructor by using recursion.
+- Added deleteBook() function, that deletes an element based on the data-key from where it originated.
+- Added editButton() function that toggles the aspect for the delete button on each book, using the date slot in the 'card'
+- Added Project's guidelines and configured Guidelines button.
