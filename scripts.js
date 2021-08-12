@@ -132,7 +132,7 @@ function generateHolder(book) {
     let currentObj = book;
     newHolder.setAttribute('data-key',`${book.numID}`)
     pRead.addEventListener('click',changeColorOfRead);
-    pDate.textContent = '📆 ' + currentObj.date;
+    pDate.textContent = currentObj.date;
     pTitle.textContent = `"${currentObj.title}"`;
     pAuthor.textContent = `By: ${currentObj.author}, ${currentObj.pages} pages`;
 
