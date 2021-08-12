@@ -132,12 +132,19 @@ function generateHolder(book) {
     let currentObj = book;
     newHolder.setAttribute('data-key',`${book.numID}`)
     pRead.addEventListener('click',changeColorOfRead);
-    pDate.textContent = currentObj.date;
-    pTitle.textContent = currentObj.title;
+    pDate.textContent = '📆 ' + currentObj.date;
+    pTitle.textContent = `"${currentObj.title}"`;
     pAuthor.textContent = `By: ${currentObj.author}, ${currentObj.pages} pages`;
-    pRead.textContent = currentObj.read;
+
+    let readStatus = () => {
+        return (currentObj.read === true)?
+        'Done':
+        'Pending';
+    }
+
+    pRead.textContent = readStatus();
     
-        (pRead.textContent == 'true')? 
+        (currentObj.read == true)? 
         pRead.classList.add('yesread'): 
         pRead.classList.add('notread');
 
@@ -178,9 +185,9 @@ function changeColorOfRead() {
     let bookClicked = localizeBook(dataKey);
 
     changeReadStatus(bookClicked[0],pElement)
-    const currentStatus = this.textContent;
+    const currentStatus = this.classList.contains('notread');
 
-    if (currentStatus == 'false') {
+    if (currentStatus == false) {
         this.classList.remove('yesread')
         this.classList.add('notread')
     } else {
@@ -192,14 +199,13 @@ function changeColorOfRead() {
 
 function changeReadStatus(book,pRef) {
     let theBook = book;
-    console.log(theBook.read)
-    let status = book.read;
+    let status = theBook.read;
     let paraText = pRef;
 
     if(status == true) {
-        book.read = false, paraText.textContent = 'false'
+        book.read = false, paraText.textContent = 'Pending'
     } else if (status == false) {
-        book.read = true, paraText.textContent = 'true'
+        book.read = true, paraText.textContent = 'Done'
     }
     
 }
@@ -223,6 +229,7 @@ function deleteBook() {
 
 function editButton() {
     const dateBtns = Array.from( document.querySelectorAll('p.date') );
+    ref_formDiv.style.visibility = 'hidden'
 
     if(editBoolean === false) {
         dateBtns.forEach(element => {
@@ -240,6 +247,7 @@ function editButton() {
 }
 
 function showGuideLines() {
+    ref_formDiv.style.visibility = 'hidden'
     const x = ref_guideDiv;
     
     if (guideBoolean === false) {
@@ -255,8 +263,14 @@ function showGuideLines() {
 }
 
 function checkLength(object) {
-    if(object.value.length > 3) {
-        object.value = 999;
+    if(object.value > 1000) {
+        object.value = 1000;
+    }
+
+    let regEx = /\d+\.+/
+    if(object.value.search(regEx) !== -1) {
+        let dotWhere = object.value.indexOf('.')
+        object.value = object.value.substr(0,dotWhere);
     }
 }
 
@@ -268,6 +282,6 @@ addNewBook('Dune','Frank Herbert',444,false)
 generateHolder(myLibrary[0]);
 addNewBook('The Three Body Problem','Cixin Liu',302,true);
 generateHolder(myLibrary[1]);
-addNewBook('Beyond Order','Jordan Peterson',432,true);
+addNewBook('Essentialism','Greg McKeown',288,true);
 generateHolder(myLibrary[2]);
 ref_formDiv.style.visibility = 'hidden';

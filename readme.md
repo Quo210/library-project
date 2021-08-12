@@ -21,3 +21,11 @@ Changelog # 4
 - Added script oninput at the form > input > page numbers to only accept up to '999' as value.
 - Configured CSS to make it look better. Added some extra classes to handle hidden items.
 - Debugged one logic error when summoning Project Guidelines that made it remain in the overflow-y after being summoned the first time.
+
+Changelog # 5
+- Changed read status from true-false to Done-Pending
+- Added conditional to page number text area so it doesn't allow floating point numbers.
+- Improved looks on desktop
+- Added link to personal repository in the footer
+- Added other graphical modifications to polish aspect
+- Added custom scrollbar for central list of books

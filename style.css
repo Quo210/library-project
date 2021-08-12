@@ -10,11 +10,15 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#header, #footer {
+#header, #footer, div#footer > a {
     width: 100%;
     text-align: center;
     background-color: #1A202C;
     color: #72b095;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #header {
@@ -76,7 +80,7 @@ background: linear-gradient(90deg, rgba(45,151,166,1) 40%, rgb(7, 97, 116) 100%)
     border: 1px solid white;
     margin: 2em auto;
     width: 92.5vw;
-    max-width: 800px;
+    max-width: 720px;
     overflow-y: scroll;
 }
 
@@ -109,12 +113,16 @@ div.titleDiv, div.statsDiv {
     grid-column: 1/2;
     grid-row: 1/2;
     display: flex;
-    border: 1px #dedba7 inset;
+    border: 2px #dedba7 inset;
+    border-radius: 1rem;
     background-color: #1f7872;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 90%;
+    margin: auto;
+    
     
 }
 
@@ -152,7 +160,7 @@ div#form {
 .improved-cover {
     width: 97.5vw;
     height: 75vh;
-    max-width: 750px;
+    max-width: 720px;
     border: #1f7872 7.5px solid;
     background-color: #dedba7;
     color: #1A202C;
@@ -170,7 +178,7 @@ fieldset {
 
 input.better-area {
     width: 80%;
-    max-width: 600px;
+    max-width: 400px;
     height: 3em;
     padding-left: 5px;
     font-size: 16px;
@@ -225,6 +233,44 @@ label {
     padding-left: 2em;
 }
 
-.muh {
-    color: #1a202c, #1f7872, #72b095, #dedba7, #d13f31;
+.central::-webkit-scrollbar {
+    width: 10px;
 }
+
+.central::-webkit-scrollbar-thumb {
+    background: #1a202c;
+    border-radius: 5px;
+}
+
+.central::-webkit-scrollbar-track {
+    background-color: #d13f31;
+}
+
+@media (min-width: 720px) {
+    div.book-holder, div.guidelines, fieldset {
+        font-size: 1.2rem;
+    }
+
+    div#core > div#buttonDiv {
+        justify-content: center;
+    }
+
+    .BTN {
+        margin: auto 40px;
+    }
+}
+
+.container {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+  
