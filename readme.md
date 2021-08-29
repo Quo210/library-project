@@ -32,3 +32,5 @@ Changelog # 5
 
 LOG_6 28AUG2021
 - Project requested to come back to this project and change the constructors to 'class' ones. Branched the original to start working.
+LOG_6.1
+- Replaced the new Book constructor with a 'class Book'

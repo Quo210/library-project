@@ -25,36 +25,32 @@ function genRandom() {
     return (Math.floor( Math.random() * 100 ) + 1).toString()
 }
 
-function Book(title = 'Unknown name',author = 'Unknown writer',pages = '?',read) {
-    let creationDate = new Date().toLocaleDateString();
 
-    let genNumID = genRandom();
-    let takenIDs = currentBooks(); // Returns Array of data-keys for querySelector div.book-holder
+class Book {
     
-    const look4Equals = () => { 
-        if (takenIDs.includes(genNumID) ===  true) {
-            genNumID = genRandom();
-            console.log(`Due to repetition ${genNumID} was just generated.`);
+    look4Equals = () => { 
+        if (this.takenIDs.includes(this.genNumID) ===  true) {
+            this.genNumID = genRandom();
+            console.log(`Due to repetition ${this.genNumID} was just generated.`);
             look4Equals();
-        } else { console.log(`Unique ID ${genNumID} generated!`) }
-    } 
-
-    look4Equals()
-
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = read,
-    this.date = creationDate,
-    this.numID = genNumID,
-    this.report = () => {
-        const readBoolean = () => {
-            return this.read = true? 'has been read already' : 'has not been read';
-        }
-        return `The book is known as ${title} and was written by ${author}, this version has ${pages} pages. So far this book ${readBoolean()}.`
+        } else { console.log(`Unique ID ${this.genNumID} generated!`) }
     }
 
-}
+    constructor(title = 'Unknown name',author = 'Unknown writer',pages = '?',read) {
+        this.creationDate = new Date().toLocaleDateString();
+        this.genNumID = genRandom();
+        this.takenIDs = currentBooks(); // Returns Array of data-keys for querySelector div.book-holder
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+        this.date = this.creationDate
+        this.numID = this.genNumID
+        this.look4Equals()
+    }    
+    
+ }
+
 
 function userInput4Book() {
     let bkTitle = ref_textAreasArr[0].value;
