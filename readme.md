@@ -29,3 +29,6 @@ Changelog # 5
 - Added link to personal repository in the footer
 - Added other graphical modifications to polish aspect
 - Added custom scrollbar for central list of books
+
+LOG_6 28AUG2021
+- Project requested to come back to this project and change the constructors to 'class' ones. Branched the original to start working.
